@@ -10,4 +10,5 @@ meson build
 cd build
 ninja
 
+strip -s bwrap
 mv bwrap "../../bwrap.$ARCH"
