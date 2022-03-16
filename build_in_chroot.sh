@@ -20,6 +20,6 @@ cat << EOF | sudo chroot chrootdir /bin/bash
 sudo apt install -y python3-pip libcap-dev
 sudo pip3 install meson ninja
 
-wget https://raw.githubusercontent.com/mgord9518/portable_squashfuse/main/build.sh
+wget https://raw.githubusercontent.com/mgord9518/portable_bwrap/main/build.sh
 sh build.sh
 EOF

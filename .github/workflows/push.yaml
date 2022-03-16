@@ -30,7 +30,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "nightly"
         prerelease: true
-        title: "Monthly build"
+        title: "Nightly build"
         files: |
-          squashfuse*
-          chrootdir/squashfuse*
+          bwrap*
+          chrootdir/bwrap*
