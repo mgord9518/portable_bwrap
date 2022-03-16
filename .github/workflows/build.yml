@@ -1,0 +1,34 @@
+name: Automatic build
+
+on:
+  schedule:
+    - cron: '0 2 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install deps
+      run:  sudo apt install -y zlib1g-dev liblzma-dev libzstd-dev liblz4-dev make gcc libfuse-dev autoconf libtool pkg-config
+
+    - name: Build for x86_64
+      run:  ./build.sh
+
+    - name: Download Ubuntu aarch64 image
+      run:  wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-arm64.squashfs
+
+    - name: Build for aarch64
+      run:  ./build_in_chroot.sh arm64
+  
+    - name: Upload build
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "nightly"
+        prerelease: true
+        title: "Monthly build"
+        files: |
+          squashfuse*
+          chrootdir/squashfuse*
