@@ -19,6 +19,7 @@ sudo mount --rbind /run/systemd chrootdir/run/systemd
 cat << EOF | sudo chroot chrootdir /bin/bash
 sudo apt update
 sudo apt install -y python3-pip libcap-dev
+sudo pip3 install --upgrade pip
 sudo pip3 install meson ninja
 
 wget https://raw.githubusercontent.com/mgord9518/portable_bwrap/main/build.sh
