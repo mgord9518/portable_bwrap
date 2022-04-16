@@ -6,7 +6,7 @@
 git clone https://github.com/containers/bubblewrap
 cd bubblewrap
 
-meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize build
+meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a -Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libc.a" -Dbuildtype=minsize build
 cd build
 ninja
 
