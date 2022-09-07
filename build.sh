@@ -15,7 +15,7 @@ gcc -o bwrap-static bwrap.p/bubblewrap.c.o bwrap.p/bind-mount.c.o bwrap.p/networ
 # bwrap must be rebuilt with the main function renamed because one executable cannot have multiple main funcs
 # Big thanks to <github.com/Seren541> for the help on how to do this
 cd ..
-sed -i 's/main /int bwrap_main(int argc, char **argv);\nbwrap_main /g' bubblewrap.c
+sed -i 's/main /extern int bwrap_main(int argc, char **argv);\nbwrap_main /g' bubblewrap.c
 meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize --reconfigure build
 cd build
 ninja
