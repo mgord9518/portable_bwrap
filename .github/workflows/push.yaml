@@ -18,11 +18,11 @@ jobs:
     - name: Build for x86_64
       run:  ./build.sh
 
-    - name: Download Ubuntu aarch64 image
-      run:  wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-arm64.squashfs
+#    - name: Download Ubuntu aarch64 image
+#      run:  wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-arm64.squashfs
 
-    - name: Build for aarch64
-      run:  ./build_in_chroot.sh arm64
+#    - name: Build for aarch64
+#      run:  ./build_in_chroot.sh arm64
   
     - name: Upload build
       uses: "marvinpinto/action-automatic-releases@latest"
@@ -33,4 +33,5 @@ jobs:
         title: "Nightly build"
         files: |
           bwrap*
+          libbwrap*
           chrootdir/bwrap*
