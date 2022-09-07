@@ -5,6 +5,7 @@
 git clone https://github.com/containers/bubblewrap
 cd bubblewrap
 
+./autogen.sh
 meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize build
 cd build
 ninja
