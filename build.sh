@@ -17,10 +17,14 @@ gcc -o bwrap-static bwrap.p/bubblewrap.c.o bwrap.p/bind-mount.c.o bwrap.p/networ
 cd ..
 perl -0pe "s/int\nmain/extern int bwrap_main(int argc, char **argv);\nint bwrap_main/" -i bubblewrap.c
 #sed -i 's/main /int bwrap_main(int argc, char **argv);\nbwrap_main /g' bubblewrap.c
-meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize --reconfigure build
-cd build
-ninja
-ar -rcs libbwrap.a bwrap.p/bubblewrap.c.o bwrap.p/bind-mount.c.o bwrap.p/network.c.o bwrap.p/utils.c.o
+#meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize --reconfigure build
+#cd build
+#ninja
+gcc -c -Os bind-mount.c -o bwrap-bind-mount.o
+gcc -c -Os network.c -o bwrap-network.o
+gcc -c -Os utils.c -o bwrap-utils.o
+gcc -c -Os bubblewrap.c -o bwrap-bubblewrap.o
+ar -rcs libbwrap.a bwrap-bubblewrap.o bwrap-bind-mount.o bwrap-network.o bwrap-utils.o
 
 strip -s bwrap*
 mv bwrap "../../bwrap.$ARCH"
