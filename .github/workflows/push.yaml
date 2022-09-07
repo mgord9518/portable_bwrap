@@ -35,3 +35,4 @@ jobs:
           bwrap*
           libbwrap*
           chrootdir/bwrap*
+          chrootdir/libbwrap*
