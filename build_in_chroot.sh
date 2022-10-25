@@ -29,6 +29,6 @@ cp /usr/bin/qemu-aarch64-static upper/usr/bin
 # Try to build in distrobox
 sudo apt install podman
 curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
-distrobox create --name alpine --image alpine:3.16
+distrobox create --name alpine --image alpine:3.16 --yes
 distrobox enter alpine -- sudo apk add autoconf gcc automake make cmake meson libcap-dev libcap-static
 distrobox enter alpine -- sh build.sh
