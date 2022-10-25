@@ -25,3 +25,10 @@ sudo pip3 install meson ninja
 wget https://raw.githubusercontent.com/mgord9518/portable_bwrap/main/build.sh
 sh build.sh
 EOF
+
+# Try to build in distrobox
+sudo apt install podman
+curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
+distrobox create --name alpine --image alpine:3.16
+#distrobox enter alpine -- sudo apk add 
+distrobox enter alpine -- sh build.sh
