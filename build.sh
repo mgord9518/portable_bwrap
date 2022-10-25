@@ -12,6 +12,8 @@ ninja
 # Why tf does it seem impossible to get static builds using Meson? Maybe I missed something but this works
 gcc -o bwrap-static bwrap.p/bubblewrap.c.o bwrap.p/bind-mount.c.o bwrap.p/network.c.o bwrap.p/utils.c.o -lcap -lc -lpthread -static -Os
 
+cat config.log
+
 # Also build as a static library for use in aisap (or wherever else someone would want to)
 # bwrap must be rebuilt with the main function renamed because one executable cannot have multiple main funcs
 # Big thanks to <github.com/Seren541> for the help on how to do this
