@@ -6,7 +6,7 @@ git clone https://github.com/containers/bubblewrap
 cd bubblewrap
 
 ./autogen.sh
-meson -Dc_link_args="-Wl,--no-undefined /usr/lib/$ARCH-linux-gnu/libcap.a" -Dbuildtype=minsize build
+meson -Dbuildtype=minsize build
 cd build
 ninja
 # Why tf does it seem impossible to get static builds using Meson? Maybe I missed something but this works
