@@ -1,0 +1,22 @@
+.{
+    .name = "bwrap",
+    .version = "0.9.0",
+
+    .paths = [][]const u8 {
+        "build.zig",
+        "build.zig.zon",
+        "lib",
+        "lib.zig",
+    },
+
+    .dependencies = .{
+        .libcap = .{
+            .url = "http://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.70.tar.xz",
+            .hash = "12208aae112f9edf7a097964711b3823ddc41cafcc558f905ecc035f188adb6edcb6",
+        },
+        .bwrap = .{
+            .url = "https://github.com/containers/bubblewrap/archive/refs/tags/v0.9.0.tar.gz",
+            .hash = "1220165eb9f6191b2431cdaf9a2665d8094ab3c38202b84d1ffb94bb8498f907f5c2",
+        },
+    },
+}
