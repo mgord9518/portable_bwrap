@@ -17,5 +17,5 @@ zig build \
     -Dstrip=true
 
 tar -cf - -C "zig-out/bin" "bwrap" \
-    -C "../../zig-out/lib" "libbwrap.a" \
+    -C "../../zig-out/lib" "libbwrap.a" "libcap.a" \
     | xz -9c > "bwrap-$OS-$ARCH.tar.xz"
